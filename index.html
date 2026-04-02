@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hệ thống quản lý thuê thiết bị</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f5f5f5;
+margin:0;
+padding:0;
+}
+
+header{
+background:#007bff;
+color:white;
+padding:15px;
+text-align:center;
+font-size:24px;
+}
+
+.container{
+width:90%;
+margin:auto;
+margin-top:20px;
+}
+
+button{
+background:#007bff;
+color:white;
+border:none;
+padding:8px 15px;
+cursor:pointer;
+border-radius:4px;
+}
+
+button:hover{
+background:#0056b3;
+}
+
+input,select{
+padding:8px;
+margin:5px;
+width:100%;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+background:white;
+}
+
+table,th,td{
+border:1px solid #ddd;
+}
+
+th{
+background:#007bff;
+color:white;
+padding:10px;
+}
+
+td{
+padding:10px;
+text-align:center;
+}
+
+.form-box{
+background:white;
+padding:20px;
+margin-top:20px;
+border-radius:5px;
+box-shadow:0 0 5px #ccc;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+HỆ THỐNG QUẢN LÝ CHO THUÊ THIẾT BỊ
+</header>
+
+<div class="container">
+
+<h2>Đăng ký thuê thiết bị</h2>
+
+<div class="form-box">
+
+<label>Thiết bị</label>
+<select id="device">
+<option>Laptop</option>
+<option>Máy chiếu</option>
+<option>Camera</option>
+<option>Micro</option>
+</select>
+
+<label>Khách hàng</label>
+<input type="text" id="customer" placeholder="Nhập tên khách hàng">
+
+<label>Ngày thuê</label>
+<input type="date" id="rentDate">
+
+<label>Ngày trả</label>
+<input type="date" id="returnDate">
+
+<label>Tiền cọc</label>
+<input type="number" id="deposit" placeholder="Nhập tiền cọc">
+
+<label>Trạng thái</label>
+<select id="status">
+<option>Đang thuê</option>
+<option>Đã trả</option>
+</select>
+
+<br><br>
+
+<button onclick="addRental()">Đăng ký thuê</button>
+
+</div>
+
+<h2>Danh sách thuê thiết bị</h2>
+
+<table>
+
+<thead>
+
+<tr>
+<th>Thiết bị</th>
+<th>Khách hàng</th>
+<th>Ngày thuê</th>
+<th>Ngày trả</th>
+<th>Tiền cọc</th>
+<th>Trạng thái</th>
+</tr>
+
+</thead>
+
+<tbody id="tableBody">
+
+</tbody>
+
+</table>
+
+</div>
+
+<script>
+
+function addRental(){
+
+var device=document.getElementById("device").value
+var customer=document.getElementById("customer").value
+var rentDate=document.getElementById("rentDate").value
+var returnDate=document.getElementById("returnDate").value
+var deposit=document.getElementById("deposit").value
+var status=document.getElementById("status").value
+
+var table=document.getElementById("tableBody")
+
+var row=table.insertRow()
+
+row.insertCell(0).innerHTML=device
+row.insertCell(1).innerHTML=customer
+row.insertCell(2).innerHTML=rentDate
+row.insertCell(3).innerHTML=returnDate
+row.insertCell(4).innerHTML=deposit
+row.insertCell(5).innerHTML=status
+
+clearForm()
+
+}
+
+function clearForm(){
+
+document.getElementById("customer").value=""
+document.getElementById("rentDate").value=""
+document.getElementById("returnDate").value=""
+document.getElementById("deposit").value=""
+
+}
+
+</script>
+
+</body>
+
+</html>
